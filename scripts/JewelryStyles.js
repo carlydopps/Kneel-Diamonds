@@ -1,10 +1,14 @@
-import { getStyles } from "./database.js"
+import { getStyles, setStyle } from "./database.js"
 
 const styles = getStyles()
 
 document.addEventListener(
     "change",
     (event) => {
+        if (event.target.name === "style") {
+            // Call the setMetal function using the event.target.value as the argument
+            setStyle(parseInt(event.target.value))
+        }
     }
 )
 

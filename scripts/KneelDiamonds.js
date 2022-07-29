@@ -3,10 +3,15 @@ import { DiamondSizes } from "./DiamondSizes.js"
 import { JewelryStyles } from "./JewelryStyles.js"
 import { Orders } from "./Orders.js"
 import { Metals } from "./Metals.js"
+import { addCustomOrder } from "./database.js"
 
 document.addEventListener(
     "click",
     (event) => {
+        const itemClicked = event.target
+        if (itemClicked.id === "orderButton") {
+            addCustomOrder() // -------YOU ARE HERE - Trying to figure out how to display second order when button is clicked
+        }
     }
 )
 
@@ -31,11 +36,23 @@ export const KneelDiamonds = () => {
 
         <article>
             <button id="orderButton">Create Custom Order</button>
+
         </article>
 
         <article class="customOrders">
             <h2>Custom Jewelry Orders</h2>
+            ${Orders()}
         </article>
     `
 }
 
+
+
+/* Everytime I replace lines 8-16 with this only line 39, it says line 12 .price is undefined in Orders.js
+    <script>
+        const orderButton = document.getElementById("orderButton")
+        orderButton.addEventListener('click', event => { 
+        ${addCustomOrder()}
+        })
+    </script> 
+*/

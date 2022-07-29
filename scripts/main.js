@@ -8,6 +8,12 @@ const renderAllHTML = () => {
 
 renderAllHTML()
 
+// main.js is responsible for starting the process of generating HTML, so it should listen for the stateChanged event
+// When the stateChanged event is dispatched by the database module, the main module will generate all the HTML again and display it
+document.addEventListener("stateChanged", event => {
+    console.log("State of data has changed. Regenerating HTML...")
+    renderAllHTML()
+})
 
 
 /* ERD Thought Process

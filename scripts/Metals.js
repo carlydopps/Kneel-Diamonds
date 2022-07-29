@@ -1,10 +1,14 @@
-import { getMetals } from "./database.js"
+import { getMetals, setMetal } from "./database.js"
 
 const metals = getMetals()
 
 document.addEventListener(
     "change",
     (event) => {
+        if (event.target.name === "metal") {
+            // Call the setMetal function using the event.target.value as the argument
+            setMetal(parseInt(event.target.value))
+        }
     }
 )
 
@@ -23,7 +27,7 @@ export const Metals = () => {
         (metal) => {
             return `<li>
                 <input type="radio" name="metal" value="${metal.id}"/> ${metal.metal}
-                </li>
+            </li>
             `
         }
     )
